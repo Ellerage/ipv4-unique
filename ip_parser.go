@@ -116,7 +116,7 @@ func setBitLocal(bitmap *Bitmap, bitmapShardIndex byte, rest uint32) {
 	bitIdx := rest & 63
 
 	// Atomic doesn't affect performance
-	atomic.OrUint64(&bitmap.segments[bitmapShardIndex][wordIdx], 1<<bitIdx)
+	atomic.OrUint64(&bitmap.segments[bitmapShardIndex][wordIdx], uint64(1)<<bitIdx)
 }
 
 func countBitsParallel(bitmap *Bitmap) uint64 {
